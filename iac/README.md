@@ -2,6 +2,27 @@
 
 This is a Terraspace project. It contains code to provision Cloud infrastructure built with [Terraform](https://www.terraform.io/) and the [Terraspace Framework](https://terraspace.cloud/).
 
+## Project Structure
+
+```
+vending-machine-deployment/iac
+├── app/stacks
+│   ├── alb/
+│   ├── ecr/
+│   ├── ecs/
+│   ├── iam/
+│   ├── vpc/
+│   
+├── config/terraform
+│   ├── tfvars/
+│   ├── backend.tf
+│   ├── provider.tf
+│   ├── root_data.tf
+│   ├── root_variables.tf
+├── .gitignore
+└── README.md
+```
+
 ## Deploy
 
 To deploy all the infrastructure stacks:
