@@ -1,0 +1,36 @@
+[
+    {
+        "cpu": 1024,
+        "essential": true,
+        "image": "${container_image}",
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "${awslogs-group}",
+                "awslogs-region": "us-east-1",
+                "awslogs-stream-prefix": "ecs"
+            },
+            "secretOptions": null
+        },
+        "memory": 2048,
+        "memoryReservation": 2048,
+        "name": "${name}",
+        "portMappings": [
+            {
+                "containerPort": 80,
+                "hostPort": 80,
+                "protocol": "tcp"
+            }
+        ],
+        "privileged": null,
+        "readonlyRootFilesystem": false,
+        "repositoryCredentials": null,
+        "secrets": [],
+        "startTimeout": 60,
+        "stopTimeout": 60,
+        "systemControls": null,
+        "ulimits": null,
+        "user": null,
+        "workingDirectory": null
+    }
+]
