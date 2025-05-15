@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  beverage-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: beverage-vending-machine
+    ports:
+      - "3000:3000"
+    env_file:
+      - example.env
+    restart: unless-stopped
