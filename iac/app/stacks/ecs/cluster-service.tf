@@ -1,14 +1,24 @@
 locals {
-  service_name        = var.service_name
-  container_name      = "${var.container_name}-${var.environment}"
-  target_group_arn    = data.terraform_remote_state.alb.outputs.target_group_arn_map["${var.service_name}-tg-${var.environment}"]
-  #task_definition_arn = data.terraform_remote_state.ecs-task.outputs.aws_ecs_task_definition_td_arn
-  #cluster_id          = data.terraform_remote_state.ecs-cluster.outputs.fargate_id
-  #cluster_name        = data.terraform_remote_state.ecs-cluster.outputs.fargate_name
-  subnet_ids          = data.terraform_remote_state.vpc.outputs.private_subnets_id
-  vpc_id              = data.terraform_remote_state.vpc.outputs.vpc_id
-  lb_sg_id            = data.terraform_remote_state.alb.outputs.lb_sg_id
+  service_name     = var.service_name
+  container_name   = "${var.container_name}-${var.environment}"
+
+  target_group_arn = (
+    var.service_name == "beverages" ? data.terraform_remote_state.alb.outputs.beverages_target_group_arn :
+    var.service_name == "ingredients" ? data.terraform_remote_state.alb.outputs.ingredients_target_group_arn :
+    null
+  )
+
+  lb_sg_id = (
+    var.service_name == "beverages" ? data.terraform_remote_state.alb.outputs.public_alb_sg_id :
+    var.service_name == "ingredients" ? data.terraform_remote_state.alb.outputs.internal_alb_sg_id :
+    null
+  )
+
+  subnet_ids = data.terraform_remote_state.vpc.outputs.private_subnets_id
+  vpc_id     = data.terraform_remote_state.vpc.outputs.vpc_id
 }
+
+
 
 resource "aws_ecs_cluster" "main" {
   name = "${var.ecs_cluster_name}-ecs-${var.environment}"
