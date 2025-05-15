@@ -89,7 +89,7 @@ variable "task_role_arn" {
 }
 
 variable "tags" {
-    default = ""
+    default = {}
 }
 
 variable "environment" {

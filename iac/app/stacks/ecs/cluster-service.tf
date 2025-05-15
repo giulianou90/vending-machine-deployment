@@ -10,6 +10,14 @@ locals {
   lb_sg_id            = data.terraform_remote_state.alb.outputs.lb_sg_id
 }
 
+resource "aws_ecs_cluster" "main" {
+  name = "${var.ecs_cluster_name}-ecs-${var.environment}"
+  tags = merge(
+    { Name = "${var.ecs_cluster_name}-ecs-${var.environment}" },
+    var.tags
+  )
+}
+
 resource "aws_security_group" "fargate_sg" {
   name        = "${local.service_name}-fargate-sg-${var.environment}"
   description = "ECS Fargate service SG"
