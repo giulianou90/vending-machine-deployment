@@ -48,7 +48,7 @@ resource "aws_lb" "public_alb" {
 
 resource "aws_lb_target_group" "beverages_tg" {
   name     = "${var.environment}-beverages-tg"
-  port     = 80
+  port     = 3000
   protocol = "HTTP"
   vpc_id   = local.vpc_id
   target_type = "ip"
@@ -132,7 +132,7 @@ resource "aws_lb" "internal_alb" {
 
 resource "aws_lb_target_group" "ingredients_tg" {
   name     = "${var.environment}-ingredients-tg"
-  port     = 80
+  port     = 3000
   protocol = "HTTP"
   vpc_id   = local.vpc_id
   target_type = "ip"
