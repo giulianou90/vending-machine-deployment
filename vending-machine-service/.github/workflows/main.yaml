@@ -3,7 +3,7 @@ name: Build and deploy beverage API to ECS
 on:
   workflow_dispatch:
   push:
-    branches: [stage, uat, master]
+    branches: [chore/trigger-deploy, uat, main]
 
 env:
   NAME: vending-machine
@@ -54,7 +54,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker build -t ${{env.REPOSITORY}} .
+          docker build -t ${{env.REPOSITORY}} -f Dockerfile .
           docker tag ${{env.REPOSITORY}} ${{env.ECR_REGISTRY}}/${{env.REPOSITORY}}:${{env.ENV}}-${{ steps.commit.outputs.short }}
           docker tag ${{env.REPOSITORY}} ${{env.ECR_REGISTRY}}/${{env.REPOSITORY}}:${{env.ENV}}-latest
           docker push ${{env.ECR_REGISTRY}}/${{env.REPOSITORY}}:${{env.ENV}}-latest
