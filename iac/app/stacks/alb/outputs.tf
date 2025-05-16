@@ -1,6 +1,4 @@
-########################################
-# Public ALB Outputs (Beverages)
-########################################
+
 
 output "public_alb_id" {
   description = "The ID of the public ALB."
@@ -47,10 +45,6 @@ output "beverages_listener_rule_arn" {
   value       = aws_lb_listener_rule.beverages_rule.arn
 }
 
-
-########################################
-# Internal ALB Outputs (Ingredients)
-########################################
 
 output "internal_alb_id" {
   description = "The ID of the internal ALB."

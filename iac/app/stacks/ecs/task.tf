@@ -1,4 +1,4 @@
-locals {
+/*locals {
   awslogs_group = "/ecs/${var.task_name}-${var.environment}"
   repository_url = data.terraform_remote_state.ecr.outputs.repository_name[var.task_name].repository_url
 }
@@ -38,3 +38,4 @@ resource "aws_iam_role_policy_attachment" "ecs_policies" {
   role       = aws_iam_role.ecs_task_execution_role.name
   policy_arn = each.value
 }
+*/

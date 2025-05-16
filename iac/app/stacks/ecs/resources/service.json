@@ -1,6 +1,6 @@
 [
     {
-        "cpu": 1024,
+        "cpu": 256,
         "essential": true,
         "image": "${container_image}",
         "logConfiguration": {
@@ -12,8 +12,8 @@
             },
             "secretOptions": null
         },
-        "memory": 2048,
-        "memoryReservation": 2048,
+        "memory": 1024,
+        "memoryReservation": 1024,
         "name": "${name}",
         "portMappings": [
             {
