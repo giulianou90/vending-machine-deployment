@@ -51,6 +51,7 @@ resource "aws_lb_target_group" "beverages_tg" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = local.vpc_id
+  target_type = "ip"
 
   health_check {
     path                = "/beverages"
@@ -134,6 +135,7 @@ resource "aws_lb_target_group" "ingredients_tg" {
   port     = 80
   protocol = "HTTP"
   vpc_id   = local.vpc_id
+  target_type = "ip"
 
   health_check {
     path                = "/ingredients"
