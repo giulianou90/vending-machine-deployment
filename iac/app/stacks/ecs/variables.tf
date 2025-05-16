@@ -18,7 +18,7 @@ variable "service_name" {
 
 variable "container_port" {
   type        = number
-  default     = "80"
+  default     = "3000"
   description = "Container port"
 }
 
