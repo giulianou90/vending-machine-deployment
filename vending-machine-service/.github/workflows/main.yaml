@@ -3,7 +3,7 @@ name: Build and deploy beverage API to ECS
 on:
   workflow_dispatch:
   push:
-    branches: [stage, uat, master]
+    branches: [chore/trigger-deploy, uat, master]
 
 env:
   NAME: vending-machine
