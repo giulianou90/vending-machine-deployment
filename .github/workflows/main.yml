@@ -10,6 +10,7 @@ env:
   REPOSITORY: vending-machine/app
   ACCOUNT_ID: 483127353410
   GITHUB_ACTIONS_ROLE_NAME: ops-github-actions
+  ENV: prd
 
 permissions:
   id-token: write
@@ -21,18 +22,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.1
-
-      - name: Set environment based on branch
-        run: |
-          if [[ "${{ github.ref }}" == "refs/heads/stage" ]]; then
-            echo "ENV=stg" >> $GITHUB_ENV
-          elif [[ "${{ github.ref }}" == "refs/heads/uat" ]]; then
-            echo "ENV=uat" >> $GITHUB_ENV
-          elif [[ "${{ github.ref }}" == "refs/heads/master" ]]; then
-            echo "ENV=prd" >> $GITHUB_ENV
-          else
-            echo "ENV=unknown" >> $GITHUB_ENV
-          fi
 
       - name: Assume CICD AWS IAM Role
         uses: aws-actions/configure-aws-credentials@v4
