@@ -2,6 +2,8 @@
 Infrastructure and deployment setup for the Vending Machine microservice
 
 ## Architecture Overview
+
+```
 +--------------------------------------------------------------+
 |                            VPC                               |
 | +-------------------+        +-------------------------+    |
@@ -40,6 +42,7 @@ Outside VPC:
 | CloudWatch Logs      |<---------| ECS Tasks (send logs)    |
 +----------------------+          +-------------------------+
 
+```
 
 
 ### Components Description
