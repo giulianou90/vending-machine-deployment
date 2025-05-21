@@ -150,10 +150,10 @@ The GitHub Actions workflow is configured to automatically build and deploy the 
 * Login to the terminal with AWS credentials
 * Check if you have the [Session Manager plugin for the AWS CLI installed](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html)
 
-* Run: aws ecs execute-command  --cluster $CLUSTER_NAME   --task $ECS_TASK_ID --container $CONTAINER_NAME   --interactive --region=us-east-1 --command "/bin/bash"
+* Run: aws ecs execute-command  --cluster $CLUSTER_NAME   --task $ECS_TASK_ID --container $CONTAINER_NAME   --interactive --region=us-east-1 --command "/bin/sh"
 
 For example:
 
-aws ecs execute-command  --cluster vending-machine-cluster-ecs-prd   --task 330eee9ebe314e87bd3b99d09d784cf0 --container vending-machine-prd   --interactive   --command "/bin/bash"
+aws ecs execute-command  --cluster vending-machine-cluster-ecs-prd   --task c4e715b5591145db807c2cbeb1b02a32 --container vending-machine-prd   --interactive   --command "/bin/sh"
 
 * You can find the $ECS_TASK_ID in the aws ecs console, under the label **Tasks** inside the cluster.
